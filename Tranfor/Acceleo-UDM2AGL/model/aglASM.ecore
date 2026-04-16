@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aglASM" nsURI="model.aglASM" nsPrefix="model.aglASM">
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityGraph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" lowerBound="2" upperBound="-1"
+        eType="#//Node" changeable="false" eOpposite="#//Node/a_nodes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n0" lowerBound="1" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/a_n0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edges" lowerBound="1" upperBound="-1"
+        eType="#//Edge" eOpposite="#//Edge/a_edges"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a_nodes" lowerBound="1"
+        eType="#//ActivityGraph" eOpposite="#//ActivityGraph/nodes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a_n0" lowerBound="1" eType="#//ActivityGraph"
+        eOpposite="#//ActivityGraph/n0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e_n2" upperBound="-1" eType="#//Edge"
+        eOpposite="#//Edge/n2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="e_n1" upperBound="-1" eType="#//Edge"
+        eOpposite="#//Edge/n1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="refCls" lowerBound="1"
+        upperBound="-1" eType="#//DomainClass" eOpposite="#//DomainClass/n_refCls"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actSeq" lowerBound="1"
+        eType="#//ModuleAct" eOpposite="#//ModuleAct/n_actSeq"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Edge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n2" lowerBound="1" eType="#//Node"
+        eOpposite="#//Node/e_n2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n1" lowerBound="1" eType="#//Node"
+        eOpposite="#//Node/e_n1"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="a_edges" lowerBound="1"
+        eType="#//ActivityGraph" eOpposite="#//ActivityGraph/edges"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainClass">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_refCls" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/refCls"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" lowerBound="1"
+        eType="#//Module" eOpposite="#//Module/domainclass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Module">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domainclass" lowerBound="1"
+        eType="#//DomainClass" eOpposite="#//DomainClass/module"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mService" upperBound="-1"
+        eType="#//ModuleService" eOpposite="#//ModuleService/m_mService"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mAct" upperBound="-1" eType="#//ModuleAct"
+        eOpposite="#//ModuleAct/m_mAct"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleService">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="m_mService" upperBound="-1"
+        eType="#//Module" eOpposite="#//Module/mService"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleAct">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="m_mAct" upperBound="-1"
+        eType="#//Module" eOpposite="#//Module/mAct"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_actSeq" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/actSeq"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preStates" ordered="false"
+        unique="false" eType="#//State" changeable="false" defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="postState" eType="#//State"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" upperBound="-1"
+        eType="#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MergeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c_mer" eType="#//ControlNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c_for" eType="#//ControlNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c_dec" eType="#//ControlNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c_seq" eType="#//ControlNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c_joi" eType="#//ControlNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="State">
+    <eLiterals name="Opened"/>
+    <eLiterals name="NewObject" value="1"/>
+    <eLiterals name="Editing" value="2"/>
+    <eLiterals name="Created" value="3"/>
+    <eLiterals name="Updated" value="4"/>
+    <eLiterals name="Deleted" value="5"/>
+    <eLiterals name="Reset" value="6"/>
+    <eLiterals name="Cancelled" value="7"/>
+  </eClassifiers>
+</ecore:EPackage>

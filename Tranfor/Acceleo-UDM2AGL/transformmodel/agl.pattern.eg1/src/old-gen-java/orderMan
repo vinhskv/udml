@@ -1,0 +1,456 @@
+		
+
+
+
+					OpaqueAction Node: CollectPayment
+
+
+
+
+
+
+					OpaqueAction Node: ReceiveOrder
+
+
+					OpaqueAction Node: AcceptPayment
+
+
+
+
+
+
+					OpaqueAction Node: FillOrder
+
+
+
+
+					OpaqueAction Node: ShipOrder
+
+
+					OpaqueAction Node: MakePayment
+
+
+
+
+					OpaqueAction Node: SentInvoice
+
+
+
+
+
+
+
+
+
+
+
+					IntialNode->
+						Name: StartHandleOrer
+						Name:
+						
+					Next Node->
+						Name ReceiveOrder
+						QualifiedName ReceiveOrder
+					
+
+					Data Store: CustOrder
+				
+					Decision AcceptOrder
+
+
+				Name of Class: Payment
+					Property: 	invalid id   
+					Association: 
+					bool Payment::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid paymentDetail   
+					Association: 
+					bool Payment::setPaymentDetail(* inPaymentDetail){
+						bool wasSuccess = false;
+						paymentDetail = inPaymentDetail;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Invoice invoid   
+					Association: 
+					bool Payment::setInvoid(Invoice* inInvoid){
+						bool wasSuccess = false;
+						invoid = inInvoid;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Customer customer   
+					Association: 
+					bool Payment::setCustomer(Customer* inCustomer){
+						bool wasSuccess = false;
+						customer = inCustomer;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CollectPayment collectPayment   
+					Association: 
+					bool Payment::setCollectPayment(CollectPayment* inCollectPayment){
+						bool wasSuccess = false;
+						collectPayment = inCollectPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: CollectPayment
+					Property: 	invalid id   
+					Association: 
+					bool CollectPayment::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CustOrder receiverOrder   
+					Association: 
+					bool CollectPayment::setReceiverOrder(CustOrder* inReceiverOrder){
+						bool wasSuccess = false;
+						receiverOrder = inReceiverOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Delivery delivery   
+					Association: 
+					bool CollectPayment::setDelivery(Delivery* inDelivery){
+						bool wasSuccess = false;
+						delivery = inDelivery;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: Delivery
+					Property: 	invalid id   
+					Association: 
+					bool Delivery::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CustOrder receivedOrder   
+					Association: 
+					bool Delivery::setReceivedOrder(CustOrder* inReceivedOrder){
+						bool wasSuccess = false;
+						receivedOrder = inReceivedOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	FillOrder fillOrder   
+					Association: 
+					bool Delivery::setFillOrder(FillOrder* inFillOrder){
+						bool wasSuccess = false;
+						fillOrder = inFillOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: Shipment
+					Property: 	invalid id   
+					Association: 
+					bool Shipment::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: Customer
+					Property: 	invalid id   
+					Association: 
+					bool Customer::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid name   
+					Association: 
+					bool Customer::setName(* inName){
+						bool wasSuccess = false;
+						name = inName;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid address   
+					Association: 
+					bool Customer::setAddress(* inAddress){
+						bool wasSuccess = false;
+						address = inAddress;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: ShipOrder
+					Property: 	invalid id   
+					Association: 
+					bool ShipOrder::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Shipment receiverOrder   
+					Association: 
+					bool ShipOrder::setReceiverOrder(Shipment* inReceiverOrder){
+						bool wasSuccess = false;
+						receiverOrder = inReceiverOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Delivery delivery   
+					Association: 
+					bool ShipOrder::setDelivery(Delivery* inDelivery){
+						bool wasSuccess = false;
+						delivery = inDelivery;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: AcceptPayment
+					Property: 	invalid id   
+					Association: 
+					bool AcceptPayment::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Invoice invoid   
+					Association: 
+					bool AcceptPayment::setInvoid(Invoice* inInvoid){
+						bool wasSuccess = false;
+						invoid = inInvoid;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Payment payment   
+					Association: 
+					bool AcceptPayment::setPayment(Payment* inPayment){
+						bool wasSuccess = false;
+						payment = inPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CollectPayment collectPayment   
+					Association: 
+					bool AcceptPayment::setCollectPayment(CollectPayment* inCollectPayment){
+						bool wasSuccess = false;
+						collectPayment = inCollectPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: Invoice
+					Property: 	invalid id   
+					Association: 
+					bool Invoice::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid name   
+					Association: 
+					bool Invoice::setName(* inName){
+						bool wasSuccess = false;
+						name = inName;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CustOrder order   
+					Association: 
+					bool Invoice::setOrder(CustOrder* inOrder){
+						bool wasSuccess = false;
+						order = inOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	StatusOrder status   
+					Association: 
+					bool Invoice::setStatus(StatusOrder* inStatus){
+						bool wasSuccess = false;
+						status = inStatus;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CollectPayment collectPayment   
+					Association: 
+					bool Invoice::setCollectPayment(CollectPayment* inCollectPayment){
+						bool wasSuccess = false;
+						collectPayment = inCollectPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: FillOrder
+					Property: 	invalid id   
+					Association: 
+					bool FillOrder::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CustOrder receivedOrder   
+					Association: 
+					bool FillOrder::setReceivedOrder(CustOrder* inReceivedOrder){
+						bool wasSuccess = false;
+						receivedOrder = inReceivedOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	HandleOrder handleOrder   
+					Association: 
+					bool FillOrder::setHandleOrder(HandleOrder* inHandleOrder){
+						bool wasSuccess = false;
+						handleOrder = inHandleOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: orderMan
+				
+				Name of Class: HandleOrder
+					Property: 	invalid id   
+					Association: 
+					bool HandleOrder::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: Product
+					Property: 	invalid id   
+					Association: 
+					bool Product::setId(* inId){
+						bool wasSuccess = false;
+						id = inId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid name   
+					Association: 
+					bool Product::setName(* inName){
+						bool wasSuccess = false;
+						name = inName;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+				Name of Class: CustOrder
+					Property: 	invalid orderId   
+					Association: 
+					bool CustOrder::setOrderId(* inOrderId){
+						bool wasSuccess = false;
+						orderId = inOrderId;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Product orderProducts   
+					Association: 
+					bool CustOrder::setOrderProducts(Product* inOrderProducts){
+						bool wasSuccess = false;
+						orderProducts = inOrderProducts;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid orderDate   
+					Association: 
+					bool CustOrder::setOrderDate(* inOrderDate){
+						bool wasSuccess = false;
+						orderDate = inOrderDate;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	invalid orderTotal   
+					Association: 
+					bool CustOrder::setOrderTotal(* inOrderTotal){
+						bool wasSuccess = false;
+						orderTotal = inOrderTotal;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Payment payment   
+					Association: 
+					bool CustOrder::setPayment(Payment* inPayment){
+						bool wasSuccess = false;
+						payment = inPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	FillOrder fileOrder   
+					Association: 
+					bool CustOrder::setFileOrder(FillOrder* inFileOrder){
+						bool wasSuccess = false;
+						fileOrder = inFileOrder;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	Delivery delivery   
+					Association: 
+					bool CustOrder::setDelivery(Delivery* inDelivery){
+						bool wasSuccess = false;
+						delivery = inDelivery;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+					Property: 	CollectPayment collectPayment   
+					Association: 
+					bool CustOrder::setCollectPayment(CollectPayment* inCollectPayment){
+						bool wasSuccess = false;
+						collectPayment = inCollectPayment;
+						wasSuccess = true;
+						return wasSuccess;
+					}
+					
+				
+	

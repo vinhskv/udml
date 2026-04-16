@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.poFile org.eventb.core.poStamp="6">
+    <org.eventb.core.poPredicateSet name="ABSHYP" org.eventb.core.poStamp="4">
+        <org.eventb.core.poIdentifier name="SUBMISSIONS" org.eventb.core.type="ℙ(SUBMISSIONS)"/>
+        <org.eventb.core.poIdentifier name="USERS" org.eventb.core.type="ℙ(USERS)"/>
+        <org.eventb.core.poIdentifier name="ROLES" org.eventb.core.type="ℙ(ROLES)"/>
+        <org.eventb.core.poIdentifier name="PERMISSIONS" org.eventb.core.type="ℙ(PERMISSIONS)"/>
+        <org.eventb.core.poIdentifier name="NODES" org.eventb.core.type="ℙ(NODES)"/>
+        <org.eventb.core.poIdentifier name="r_LayoutEditor" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="r_Reviewer" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="n_SubmissionReview" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_Submission" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_LayoutEditing" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_EditorialDecision" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_AuthorRevision" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="r_Editor" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="r_Proofreader" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="n_SubmissionQueue" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_Copyediting" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_SelectReviewers" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_Start" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="r_Admin" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="n_Done" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="n_ReviewConducted" org.eventb.core.type="NODES"/>
+        <org.eventb.core.poIdentifier name="r_SectionEditor" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="r_Author" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="r_Copyeditor" org.eventb.core.type="ROLES"/>
+        <org.eventb.core.poIdentifier name="n_Proofreading" org.eventb.core.type="NODES"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poSequent name="axm4/WD" org.eventb.core.accurate="true" org.eventb.core.poDesc="Well-definedness of Axiom" org.eventb.core.poStamp="6">
+        <org.eventb.core.poPredicateSet name="SEQHYP" org.eventb.core.parentSet="/SevenBridges/SevenContext.bpo|org.eventb.core.poFile#SevenContext|org.eventb.core.poPredicateSet#HYP)"/>
+        <org.eventb.core.poPredicate name="SEQHYQ" org.eventb.core.predicate="finite(USERS)" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#\\"/>
+        <org.eventb.core.poSource name="SEQHYR" org.eventb.core.poRole="DEFAULT" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#\\"/>
+        <org.eventb.core.poSelHint name="SEQHYS" org.eventb.core.poSelHintFst="/SevenBridges/SevenContext.bpo|org.eventb.core.poFile#SevenContext|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poSelHintSnd="/SevenBridges/SevenContext.bpo|org.eventb.core.poFile#SevenContext|org.eventb.core.poPredicateSet#HYP)"/>
+    </org.eventb.core.poSequent>
+    <org.eventb.core.poPredicateSet name="HYP)" org.eventb.core.parentSet="/SevenBridges/SevenContext.bpo|org.eventb.core.poFile#SevenContext|org.eventb.core.poPredicateSet#ABSHYP" org.eventb.core.poStamp="0">
+        <org.eventb.core.poPredicate name="PRD0" org.eventb.core.predicate="partition(NODES,{n_Submission},{n_SubmissionQueue},{n_SubmissionReview},{n_SelectReviewers},{n_ReviewConducted},{n_EditorialDecision},{n_AuthorRevision},{n_Copyediting},{n_LayoutEditing},{n_Proofreading},{n_Done},{n_Start})" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#6"/>
+        <org.eventb.core.poPredicate name="PRD1" org.eventb.core.predicate="partition(ROLES,{r_Author},{r_Admin},{r_Editor},{r_SectionEditor},{r_Reviewer},{r_Copyeditor},{r_LayoutEditor},{r_Proofreader})" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#C"/>
+        <org.eventb.core.poPredicate name="PRD2" org.eventb.core.predicate="finite(USERS)" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#H"/>
+    </org.eventb.core.poPredicateSet>
+    <org.eventb.core.poPredicateSet name="ALLHYP" org.eventb.core.parentSet="/SevenBridges/SevenContext.bpo|org.eventb.core.poFile#SevenContext|org.eventb.core.poPredicateSet#HYP)" org.eventb.core.poStamp="4">
+        <org.eventb.core.poPredicate name="PRD3" org.eventb.core.predicate="card(USERS)≥5" org.eventb.core.source="/SevenBridges/SevenContext.buc|org.eventb.core.contextFile#SevenContext|org.eventb.core.axiom#\\"/>
+    </org.eventb.core.poPredicateSet>
+</org.eventb.core.poFile>

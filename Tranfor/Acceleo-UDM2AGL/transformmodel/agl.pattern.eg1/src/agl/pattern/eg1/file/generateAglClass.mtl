@@ -1,0 +1,54 @@
+[comment encoding = UTF-8 /]
+[module generateAglClass('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+
+[template public generateElementAglClass(aModel : Model)]
+package [aModel.name.toLower().concat('.application')/];
+
+[for (c:Class | aModel.eContents(Class)) ]
+  [if c.getStereotypeApplications()->asOrderedSet()->first().eClass().name = 'DataflowDataTypes']
+     [for (subc:Class | c.eContents(Class)) ]
+import [aModel.name.toLower()/].datatypes.[subc.name/]; [subc.datatypesgenerate()/]
+    [/for]
+[/if]
+[/for]
+
+[/template]
+
+[template public datatypesgenerate(aClass : Class)]
+package [aClass.getModel().name.toLower().concat('.datatypes')/];
+
+public class [aClass.name/] {
+
+  [for (p: Property | aClass.attribute) separator('\n')]
+    private [p.type.name.substitute('ELong', 'Long')/] [p.name/];
+  [/for]
+ 
+    public [aClass.name/]() {
+
+    }
+
+    public [aClass.name/]([for (p: Property | aClass.attribute) separator(', ')][p.type.name.substitute('ELong', 'Long')/] [p.name/][/for]) {
+    [for (p: Property | aClass.attribute)]
+        this.[p.name/] = [p.name/];
+    [/for]     
+    }
+
+    [for (p: Property | aClass.attribute) separator('\n')]
+    public [p.type.name.substitute('ELong', 'Long')/] get[p.name.toUpperFirst()/]() {
+        return [p.name/];
+    }
+
+    public void set[p.name.toUpperFirst()/]([p.type.name.substitute('ELong', 'Long')/] [p.name/]) {
+        this.[p.name/] = [p.name/];
+    }
+    [/for]
+ 
+    @Override
+    public String toString() {
+        return "(" + [for (p: Property | aClass.attribute) separator(' + "," + ')]this.[p.name/][/for] + ")";
+    }
+
+}
+
+[/template]

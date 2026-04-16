@@ -1,0 +1,17 @@
+[module testSort('http://www.eclipse.org/uml2/5.0.0/UML')]
+
+[template public generateTestSort(aModel : Model)]
+[file ('testSort.txt', false, 'UTF-8')]
+
+[let sortedElements : Sequence(ActivityNode) = 
+packagedElement
+->select(e | e.oclIsKindOf(Activity))
+->collect(e | e.oclAsType(Activity).node)
+->sortedBy(n | n.name)]
+		[for (sortedElement : ActivityNode | sortedElements)]
+[sortedElement.name/];
+		[/for]
+[/let]
+
+[/file]
+[/template]

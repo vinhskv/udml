@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="agl-courseMan" nsURI="agl.courseman" nsPrefix="agl.courseman">
+  <eClassifiers xsi:type="ecore:EClass" name="EnrolmentMgmt">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finalGrade" eType="#//Char"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manages ->" lowerBound="1"
+        upperBound="-1" eType="#//Student"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Student">
+    <eOperations name="getId" eType="#//Integer"/>
+    <eOperations name="getName" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="helprequest" lowerBound="1"
+        eType="#//HelpRequest"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SClass">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" upperBound="-1"
+        eType="#//Student" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Integer"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Char"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="String"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HelpRequest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Integer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="content" eType="#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enrolment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalMark" eType="#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="examMark" eType="#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finalGrade" eType="#//Char"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Int"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Double"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CourseModule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="semester" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="credits" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" lowerBound="1"
+        upperBound="-1" eType="#//Student.1" eOpposite="#//Student.1/coursemodule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enrolment" eType="#//Enrolment.1"
+        eOpposite="#//Enrolment.1/coursemodule"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Address">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="desc" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" lowerBound="1"
+        eType="#//Student.1" eOpposite="#//Student.1/address"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ElectiveModule">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deptName" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coursemodule" upperBound="-1"
+        eType="#//CourseModule" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CopulsoryModule">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coursemodule" upperBound="-1"
+        eType="#//CourseModule" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Enrolment">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="internalMark" eType="#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="examMark" eType="#//Double"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="finalGrade" eType="#//Char"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" eType="#//Student.1"
+        eOpposite="#//Student.1/enrolment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coursemodule" eType="#//CourseModule"
+        eOpposite="#//CourseModule/enrolment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Student">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="address" lowerBound="1"
+        eType="#//Address" eOpposite="#//Address/student"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coursemodule" upperBound="30"
+        eType="#//CourseModule" eOpposite="#//CourseModule/student"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enrolment" eType="#//Enrolment.1"
+        eOpposite="#//Enrolment.1/student"/>
+  </eClassifiers>
+</ecore:EPackage>

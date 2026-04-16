@@ -1,0 +1,83 @@
+[comment encoding = UTF-8 /]
+[**
+ * The documentation of the module generate.
+ */]
+[module generate('http://www.eclipse.org/uml2/5.0.0/UML', 'http://www.eclipse.org/ocl/2015/Pivot', 'http://www.eclipse.org/emf/2002/Ecore')]
+[comment/]
+[**
+* [import files::generatenode /]
+
+[**
+ * The documentation of the template generateElement.
+ * @param aModel
+ */]
+
+[template public generateElement(anEClass:EClass)]
+[comment @main/]
+
+	[generateElementEclass(anEClass)/]
+
+[/template]
+
+[template public javaName(ac : Activity) post (trim())]	
+[file (ac.name.concat('.java'),false)]
+	Public class [ac.name/]
+	[for (p : Action | ac.ownedElement)]
+			[p.name/]
+	[/for]
+[/file]
+[/template]
+
+
+[template public node(n : InitialNode)]
+[comment @main /]
+[file (n.name, false, 'UTF-8')]
+ [n.outgoing.target.name/]
+[/file]
+[/template]
+[template public generateElementEclass(aEClass : EClass)]
+[file (aEClass.name.concat('.java'), false, 'UTF-8')]
+[comment][/comment]
+public class [aEClass.name/] {
+
+[for (aEAttribute : EAttribute | aEClass.eAllAttributes)]
+    [aEAttribute.eType.instanceClassName/] [aEAttribute.name/];
+[/for]
+
+[for (aEReference : EReference | aEClass.eAllReferences)]
+    [aEReference.eReferenceType.name/] [aEReference.name/];
+[/for]
+
+[for (aEAttribute : EAttribute | aEClass.eAllAttributes)]
+    public [aEAttribute.eType.instanceClassName/] get[aEAttribute.name.toUpperFirst()/] () {
+        return this.[aEAttribute.name/];
+    }
+[/for]
+
+[for (aEAttribute : EAttribute | aEClass.eAllAttributes)]
+    public void set[aEAttribute.name.toUpperFirst()/] ([aEAttribute.eType.instanceClassName/] [aEAttribute.name/]) {
+        this.[aEAttribute.name/] = [aEAttribute.name/];
+    }
+[/for]
+
+[for (aEReference : EReference | aEClass.eAllReferences)]
+    public [aEReference.eReferenceType.name/] get[aEReference.name.toUpperFirst()/] () {
+        return this.[aEReference.name/];
+    }
+[/for]
+
+[for (aEReference : EReference | aEClass.eAllReferences)]
+    public void set[aEReference.name.toUpperFirst()/] ([aEReference.eReferenceType.name/] [aEReference.name/]) {
+        this.[aEReference.name/] = [aEReference.name/];
+    }
+[/for]
+
+[for (aEOperation : EOperation | aEClass.eAllOperations)]
+    public [aEOperation.eType.instanceClassName/] [aEOperation.name/] () {
+    //TODO
+    }
+[/for]
+
+}
+[/file]
+[/template]

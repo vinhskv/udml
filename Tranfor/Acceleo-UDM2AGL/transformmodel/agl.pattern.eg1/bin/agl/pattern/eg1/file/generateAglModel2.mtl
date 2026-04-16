@@ -1,0 +1,357 @@
+[comment encoding = UTF-8 /]
+[module generateAglModel2('http://www.eclipse.org/uml2/5.0.0/UML')]
+[comment]-------import file.mtl-----------------------------------[/comment] 
+[import agl::pattern::eg1::file::coreServices /]
+[import agl::pattern::eg1::file::generateAglClass /]
+
+[comment]---------------------------------------------------------[/comment] 
+[comment]-------- 1. Generate AGL --------------------------------[/comment]
+[comment]---------------------------------------------------------[/comment] 
+[template public generateElementAGL(aModel : Model)]
+[file (aModel.name.concat('java'), false, 'UTF-8')]
+[comment Java package/]
+package [(self.name)/];
+
+/**Activity graph configuration*/
+@AGraph(nodes={
+	[for ( e: PackageableElement| packagedElement)]
+		[if(e.oclIsKindOf(Activity))]
+			[let aActivity : Activity = e.oclAsType(Activity)]	
+			[for (aActivityNode : ActivityNode | aActivity.node)]
+				[let nextNode: ActivityNode=aActivityNode.outgoing->any(true).target]
+					[if (nextNode.oclIsKindOf(OpaqueAction))]
+////////////////// cal Sequential
+						[callSequentialAGL(aActivityNode)/]		
+					[/if]
+////////////////// call Decision
+					[if (nextNode.oclIsKindOf(DecisionNode))]
+						[callDecisionAGL(aActivityNode)/]		
+					[/if]
+					[if (nextNode.oclIsKindOf(ForkNode))]
+						[callForkAGL(aActivityNode)/]		
+					[/if]
+					[if (nextNode.oclIsKindOf(MergeNode))]
+						[callMergeAGL(aActivityNode)/]		
+					[/if]
+					[if (nextNode.oclIsKindOf(JoinNode))]
+						[callJoinAGL(aActivityNode)/]		
+					[/if]
+				[/let]	
+[comment]--------------------Initial Node--------------------------[/comment] 
+[comment]				[if(aActivityNode.oclIsKindOf(InitialNode))][/comment] 
+[comment]					Start Handle Order: [aActivityNode.name/][/comment] 
+[comment]				[/if][/comment] 
+[comment]-------------------Coordinate Node------------------------[/comment] 
+				[if ((aActivityNode.oclIsKindOf(OpaqueAction))and(aActivityNode.name='Coordinate'))]
+@ANode(label="[aActivityNode.incoming.name/]",
+	zone="top",refCls=[aActivityNode.incoming.name.concat('.class')/],
+	serviceCls=DataController.class,
+	outNode={"[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.name/]"},
+	nodeType=[aActivityNode.name/]
+	actSeq={
+		[genMActnewObject()/],
+		[genMActsetDataFieldValues()/],
+		[genMActcreateObject()/]
+	}),
+[comment]--------------------DataStore Node------------------------[/comment] 
+@ANode(label="[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.name/]",zone="[aActivityNode.incoming.name/]",
+	refCls=[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.name.concat('.class')/],
+	serviceCls=DataController.class,
+	outNodes={"[aActivityNode.outgoing->any(true).target.name/]"},
+	actSeq={
+		[genMActshowAndUpdateObject()/]
+	}),
+				[/if]
+[comment]--------------------Decision Node--------------------------[/comment] 
+				[if(aActivityNode.oclIsKindOf(DecisionNode))]
+@ANode(label="[aActivityNode.name/]",
+	refCls=[aActivityNode.incoming.name.concat('.class')/],nodeType=Decision,
+	outNodes={"[aActivityNode.outgoing->any(target.oclIsKindOf(OpaqueAction)).target.incoming.name/],[aActivityNode.outgoing->any(target.oclIsKindOf(MergeNode)).target.name/]"}),
+				[/if]
+[comment]--------------------Merge Node-----------------------------[/comment] 
+				[if(aActivityNode.oclIsKindOf(MergeNode))]
+@ANode(label="[aActivityNode.name/]",
+	refCls=[aActivityNode.outgoing.name.concat('.class')/],nodeType=Merge,
+	outNodes={
+		"[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.name/]"
+	}),
+				[/if]
+[comment]--------------------Fork Node-----------------------------[/comment] 
+				[if(aActivityNode.oclIsKindOf(ForkNode))]
+@ANode(label="[aActivityNode.name/]",zone="[aActivityNode.getLabel()/]",
+	refCls=[aActivityNode.outgoing.name.concat('.class')/],nodeType=Fork,
+	outNodes={[aActivityNode.outgoing.name/]},
+	actSeq={
+		[genMActnewObject()/],
+		[genMActcreateObject()/]
+	}),
+				[/if]	
+[comment]--------------------Join Node-----------------------------[/comment] 
+				[if(aActivityNode.oclIsKindOf(JoinNode))]
+@ANode(label="[aActivityNode.name/]",
+	refCls=[aActivityNode.name.concat('.class')/],nodeType=Join,
+	outNodes={
+		[aActivityNode.outgoing.name/]
+	},
+				[/if]	
+[comment]--------------------DataStore Node->finish-----------------[/comment] 
+				[if (aActivityNode.outgoing->any(true).target.name='FinishHandleOrder')]
+@ANode(label="[aActivityNode.name/]",zone=[aActivityNode.incoming.name/],
+	refCls=[aActivityNode.name.concat('.class')/],
+	serviceCls={
+		[genMActactivateView()/],
+		[genMActshowObject()/],
+		[genMActupdateObject()/]
+	}),
+				[/if]
+[comment]--------------------Data Controller------------------------[/comment] 		
+				[if(aActivityNode.oclIsKindOf(OpaqueAction))]
+						[if(aActivityNode.outgoing->any(true).target.oclIsKindOf(DataStoreNode))]
+@Anode(label="[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.getLabel()/]",zone="top",init=true,
+	refCls=[aActivityNode.outgoing->any(target.oclIsKindOf(DataStoreNode)).target.name.concat('.class')/], serviceCls=DataController.class,
+	outNodes={"[aActivityNode.outgoing->any(target.oclIsKindOf(OpaqueAction)).target.getLabel()/]"},				
+	actSeq={
+		[genMActcreateObject()/]
+	}),
+						[/if]
+					[/if]
+			[/for]
+			[/let]
+		[/if]
+	[/for]
+})
+[comment]-------------------------------------------------------------[/comment] 
+[comment]------------------------ 2.- Generate Class--------- --------[/comment]
+[comment]-------------------------------------------------------------[/comment] 
+	[aModel.genDCSL()/]
+
+}
+[/file]
+[/template]
+
+[comment]------------------------- 1.1 Generate Activity Node --------[/comment]
+[comment packagePath/]
+[template public packagePath(aPackagePath : String)]
+	template_expression
+[/template]
+[comment javaName file /]
+[template public javaName(aModel : Model) post (trim())]
+	[name.toUpperFirst()/]
+[/template]
+[template public activity2java(aModel : Model)]
+	[for (node : Node | aModel.ownedElement)]
+		[if (node.isActive)]
+			[node.name/]
+		[/if]
+	[/for]
+[/template]
+[comment]-------------------------call the next current node--------[/comment]
+[template public callAction(currentNode : ActivityNode)]
+	[currentNode.outgoing->any(true).target/]
+[/template]
+
+[comment]------------------------- Generate sequential node--------[/comment]
+[template public callSequentialAGL(esNode : ActivityNode)]
+	[let enNode : ActivityNode = esNode.outgoing->any(true).target]
+		@ANode{refCls=[esNode.name/], serviceCls=DataController, outClses=[enNode.name/],
+				actSeq=	[genMActcreateObject()/]}
+		@ANode{refCls=[enNode.name/], serviceCls=DataController, 
+				actSeq= [genMActnewObject()/].
+						[genMActsetDataFieldValuesAndCreate()/]
+	[/let]
+	
+[/template]
+[comment]------------------------- Generate Decision node--------[/comment]
+[template public callDecisionAGL(enNode : ActivityNode)]
+	[let edNode : ActivityNode = enNode.outgoing->any(true).target]
+	@ANode{refCls=[enNode.name/],serviceCls=DataController, outClses=[edNode.name/],
+	actSeq=[genMActcreateObject()/], init=true} 
+	@ANode{refCls=[edNode.name/], nodeType=Decision, outClses=
+	[for (aNode : ActivityNode | edNode.outgoing->any(true).target)]
+		[aNode.name/] 
+	[/for]
+	[for (aNode : ActivityNode | edNode.outgoing->any(true).target)]
+	[if (aNode.oclIsKindOf(DataStoreNode))]
+	@ANode{refCls=[aNode.name/], nodeType=[aNode.oclIsTypeOf(DecisionNode)/], outClses=[callAction(aNode)/]}
+	[else]
+	@ANode{refCls=[aNode.name/], serviceCls=DataController,
+		actSeq= [genMActnewObject()/]
+		[genMActsetDataFieldValuesAndCreate()/]
+	[/if]
+	[/for]	
+	[/let]
+	
+[/template]
+[comment]------------------------- Generate Fork node--------[/comment]
+[template public callForkAGL(esNode : ActivityNode)]
+	[let enNode : ActivityNode = callAction(esNode)]
+...............
+	[/let]
+	
+[/template]
+[comment]------------------------- Generate Merge node--------[/comment]
+[template public callMergeAGL(esNode : ActivityNode)]
+	[let enNode : ActivityNode = callAction(esNode)]
+.........................
+	[/let]
+	
+[/template]
+[comment]------------------------- Generate Join node--------[/comment]
+[template public callJoinAGL(esNode : ActivityNode)]
+	[let enNode : ActivityNode = callAction(esNode)]
+	..........................
+	[/let]
+	
+[/template]
+[comment]------------------------ 1.x- Generate MAct--------- --------[/comment]
+[query public genMActcreateObject() : 
+Set(String)='@MAct(actName=newObject,pstStates={Created})'
+/]
+
+[query public genMActnewObject() : 
+Set(String)='@MAct(actName=newObject,pstStates={NewObject})'
+/]
+
+[query public genMActsetDataFieldValues() : 
+Set(String)='@MAct(actName=setDataFieldValues,attribNames={"accepted"})'
+/]
+
+[query public genMActsetDataFieldValuesAndCreate() : 
+Set(String)='@MAct(actName=setDataFieldValues,attribNames={"accepted"},pstStates={Created})'
+/]
+
+[query public genMActupdateObject() : 
+Set(String)='@MAct(actName=UpdateObject,attribNames={"Update"})'
+/]
+
+[query public genMActshowAndUpdateObject() : 
+Set(String)='@MAct(actName=showObject,attribNames={"Update"})'
+/]
+
+[query public genMActshowObject() : 
+Set(String)='@MAct(actName=showObject)'
+/]
+
+[query public genMActactivateView() : 
+Set(String)='@MAct(actName=activateView)'
+/]
+[comment]-------------------------------------------------------------[/comment] 
+[comment]------------------------ 2.- Generate Class--------- --------[/comment]
+[comment]-------------------------------------------------------------[/comment] 
+
+[template public genDCSL(model : Model)]
+public class HandleOrder{
+	[for ( e: PackageableElement| packagedElement)]
+		[if(e.oclIsKindOf(Class))]
+			[let aClass : Class = e.oclAsType(Class)]
+[comment]-------------------Class HandleOrder-------------------------[/comment] 
+				[if aClass.name='HandleOrder']
+public class [aClass.name.toUpperFirst()/] {
+					[genDClass('false', 'true')/]
+						[for (aAtribute : Property | aClass.ownedAttribute)]
+							[if (aAtribute.name='id')]
+								[genDAttrID('id','true', 'true', 'Type.Integer', 5, 'false', 'false')/]
+								private int id;
+								private static int idCounter=0;
+							[/if]
+						[/for]
+							public [aClass.name/](Integer id)
+								{ this.id=nextID(id);}
+							//for use by object form
+							public [aClass.name/]()
+								{ this(null);}
+							public int GetId()
+								{ return id;}  
+							private static int nextID(Integer currID) {
+    							if (currID == null) { // generate one
+      								idCounter++;
+      								return idCounter;
+    							} else { // update
+     								int num;
+      								num = currID.intValue();
+      							if (num > idCounter) {
+        							idCounter=num;
+      								}   
+      							return currID;
+    							}
+ 							 }
+					[/if]
+					
+				[/let]	
+			[/if]
+[comment]-------------------Associate----------------------------------[/comment] 
+			[if (e.oclIsKindOf(Association))]
+				[let aAssociation : Association = e.oclAsType(Association)]
+[comment]-------------------order--------------------------------------[/comment] 
+					[if (aAssociation.name='order')]
+						[let filter : String = genSelect('CustOrder.class')]
+							[genDAttrFilter('orders', 'Type.Collection',filter, 'false')/]
+						[/let]
+						[let associate : String = genAssociate('CustOrder.class', 0, 30, 'false')]
+							[genDAssoc('create-order', 'mgmt', 'AssocTye.One2Many', 'AssocEndType.One', associate)/]
+						[/let]
+							private Collection <[aAssociation.name.toUpperFirst()/]> [aAssociation.name/];
+					[/if]
+[comment]----------------fill order-------------------------------------[/comment] 
+					[if (aAssociation.name='fillOrder')]
+						[let filter : String = genSelect('FillOrder.class')]
+							[genDAttrFilter('fillOrders', 'Type.Collection',filter, 'false')/]
+						[/let]
+						[let associate : String = genAssociate('FillOrder.class', 0, 30, 'false')]
+							[genDAssoc('fill-order', 'mgmt', 'AssocTye.One2Many', 'AssocEndType.One', associate)/]
+						[/let]
+							private Collection <[aAssociation.name.toUpperFirst()/]> [aAssociation.name/];
+					[/if]
+
+				[/let]
+			[/if]
+	[/for]
+}
+[/template]
+
+[comment]------------------------ Queries DCSL--------------- --------[/comment]
+[query public genDClass(serialisable: String,singleton: String) : 
+Set(String)='@DClass(serialisable='.concat(serialisable).concat(',singleton=').concat(singleton).concat(')')
+/]
+[query public genDAttrID(name: String,idAttr: String,auto:String,type:String,length: Integer,optional:String,muatable:String) : 
+Set(String)='@DAttr(name="'.concat(name).concat('",id=').concat(idAttr).concat(',auto=').concat(auto).concat(',type=').concat(type).concat(',length=').concat(length.toString()).concat(',optional=').concat(optional).concat(',mutable=').concat(muatable).concat(')')
+/]
+[query public genDAttrFilter(name: String,type: String,filter: String,serialisable: String) : 
+Set(String)='@DAttr(name="'.concat(name).concat('",type=').concat(type).concat(',filter=').concat(filter).concat(',serialisable=').concat(serialisable).concat(')')
+/]
+[query public genSelect(clazz: String) : 
+Set(String)='@Select(clazz='.concat(clazz).concat(')')
+/]
+[query public genDAssoc(ascName: String,role: String,ascType:String,endType:String,associate: String) : 
+Set(String)='@DAttr(ascName="'.concat(ascName).concat('",role="').concat(role).concat('",ascType=').concat(ascType).concat(',endType=').concat(endType).concat(',associate=').concat(associate).concat(')')
+/]
+
+[query public genAssociate(type: String, cardMin: Integer, CardMax: Integer, updateLink: String) : 
+Set(String)='@Associate(type='.concat(type).concat(',cardMin=').concat(cardMin.toString()).concat(',cardMax=').concat(CardMax.toString()).concat(',updateLink=').concat(updateLink).concat(')')
+/]
+
+[comment]------------------------ 2.2- Generate property----- --------[/comment]
+[template public propertyClass(p : Property)]
+	[p.type.name.substitute('ELong', 'Long')/] [p.name/]   
+[/template]
+[comment]------------------------ 2.x- Generate Class to Java--------- --------[/comment]
+[template public classToJava(aClass : Class)]
+	Class [aClass.name/]
+	{
+		//Attribute declareations
+		[for (aAtribute : Property | aClass.ownedAttribute)]
+			[aAtribute.type.name/] [aAtribute.name/]
+		[/for]
+		//Constructor
+			[aClass.name/]()
+				{
+				}
+		//Oprater
+		[for (aOperation : Operation | ownedOperation)]
+			Public [aOperation.name/]:[aOperation.type.name/]
+				{
+					//todo
+				}
+		[/for]
+[/template]
+

@@ -1,0 +1,163 @@
+/**Activity graph configuration*/
+@Agraph(nodes={
+					/*1*/
+////////////////
+1.6:Delivery
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: 8:CollectPayment
+
+////////////////
+1.8:CollectPayment
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.Invoice
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.1:CustOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: ReceiveOrder
+
+////////////////
+1.ReceiveOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: AcceptPayment
+							@Anode(label="CustOrder",zone="top",init=true,
+									refCls=CustOrder.class, serviceCls=DataController.class,
+									outNodes={"invalid"},				
+									actSeq=@MAct(actName=newObject,endStates={Created})
+							}),
+						
+
+////////////////
+1.AcceptPayment
+2.invalid
+3. orderMan
+
+					/*1*/
+					Decision Node: 2:AcceptOrNot
+					@Anode(label="2:AcceptOrNot",
+									refCls=2:AcceptOrNot.class,nodeType=Decision,
+									outNdoes={"2:3:FillOrder",
+												3:
+														1.	Quard: 
+////////////////
+1.2:AcceptOrNot
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.FinishHandleOrer
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: 3:FillOrder
+							@Anode(label="5:CustOrder",zone="top",init=true,
+									refCls=5:CustOrder.class, serviceCls=DataController.class,
+									outNodes={"invalid"},				
+									actSeq=@MAct(actName=newObject,endStates={Created})
+							}),
+						
+
+////////////////
+1.3:FillOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.CustOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: 9:ShipOrder
+
+////////////////
+1.9:ShipOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: MakePayment
+
+////////////////
+1.MakePayment
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.12:Shipment
+2.invalid
+3. orderMan
+
+					/*1*/
+						OpaqueAction Node: SentInvoice
+							@Anode(label="Invoice",zone="top",init=true,
+									refCls=Invoice.class, serviceCls=DataController.class,
+									outNodes={"MakePayment"},				
+									actSeq=@MAct(actName=newObject,endStates={Created})
+							}),
+						
+
+////////////////
+1.SentInvoice
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.CompleteOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.EndOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.5:CustOrder
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.Payment
+2.invalid
+3. orderMan
+
+					/*1*/
+////////////////
+1.CustOrder
+2.invalid
+3. orderMan
+
+					Initial Node 1: StartHandleOrer
+					/*1*/
+////////////////
+1.StartHandleOrer
+2.invalid
+3. orderMan
+
+
+		

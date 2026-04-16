@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="meta-ad" nsURI="agl.pattern.meta-ad" nsPrefix="agl.pattern.meta-ad">
+  <eClassifiers xsi:type="ecore:EClass" name="Behavior"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityGraph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" upperBound="-1"
+        eType="#//Activity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behavior" upperBound="-1"
+        eType="#//Behavior" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="objects" eType="#//Objects"
+        eOpposite="#//Objects/activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="varialbles" upperBound="-1"
+        eType="#//Varialbles" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="events" eType="#//Events"
+        eOpposite="#//Events/activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
+        eType="#//ActivityNode" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityedge" upperBound="-1"
+        eType="#//ActivityEdge" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Objects">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        eOpposite="#//Activity/objects"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Varialbles"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Events">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"
+        eOpposite="#//Activity/events"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
+        eType="#//ActivityNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="NewDataType1" instanceTypeName="newDataType1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExcutableNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
+        eType="#//ActivityNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
+        eType="#//ActivityNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activitynode" upperBound="-1"
+        eType="#//ActivityNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuespecification" upperBound="-1"
+        eType="#//ValueSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityedge" upperBound="-1"
+        eType="#//ActivityEdge" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activityedge" upperBound="-1"
+        eType="#//ActivityEdge" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlnode" upperBound="-1"
+        eType="#//ControlNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlnode" upperBound="-1"
+        eType="#//ControlNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MergeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlnode" upperBound="-1"
+        eType="#//ControlNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlnode" upperBound="-1"
+        eType="#//ControlNode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SequentialNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controlnode" upperBound="-1"
+        eType="#//ControlNode" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

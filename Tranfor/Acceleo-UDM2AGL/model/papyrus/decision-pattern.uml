@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_vrjKYP7EEe23SqTzP9Muyw" name="model-papyrus">
+  <packageImport xmi:type="uml:PackageImport" xmi:id="_v0x-4P7EEe23SqTzP9Muyw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Activity" xmi:id="_vt4FoP7EEe23SqTzP9Muyw" name="DecisionPattern" node="_7ATmsP7FEe23SqTzP9Muyw _SpxyYP7GEe23SqTzP9Muyw _8EhnUP7GEe23SqTzP9Muyw _Jah_IP7HEe23SqTzP9Muyw _siaH0P7HEe23SqTzP9Muyw _8L9PkP7HEe23SqTzP9Muyw _EYAD8P7IEe23SqTzP9Muyw _IO1LkP7IEe23SqTzP9Muyw _NroygP7IEe23SqTzP9Muyw">
+    <edge xmi:type="uml:ControlFlow" xmi:id="_SsrVYP7GEe23SqTzP9Muyw" target="_SpxyYP7GEe23SqTzP9Muyw" source="_7ATmsP7FEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_8II8AP7GEe23SqTzP9Muyw" target="_8EhnUP7GEe23SqTzP9Muyw" source="_SpxyYP7GEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_JcEQMP7HEe23SqTzP9Muyw" target="_Jah_IP7HEe23SqTzP9Muyw" source="_SpxyYP7GEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_sjwysP7HEe23SqTzP9Muyw" target="_siaH0P7HEe23SqTzP9Muyw" source="_8EhnUP7GEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_8NcdUP7HEe23SqTzP9Muyw" target="_8L9PkP7HEe23SqTzP9Muyw" source="_8EhnUP7GEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_Ea-fcP7IEe23SqTzP9Muyw" target="_EYAD8P7IEe23SqTzP9Muyw" source="_8L9PkP7HEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_IQFIwP7IEe23SqTzP9Muyw" target="_IO1LkP7IEe23SqTzP9Muyw" source="_8L9PkP7HEe23SqTzP9Muyw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_NtDHwP7IEe23SqTzP9Muyw" target="_NroygP7IEe23SqTzP9Muyw" source="_siaH0P7HEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:InitialNode" xmi:id="_7ATmsP7FEe23SqTzP9Muyw" name="start" outgoing="_SsrVYP7GEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_SpxyYP7GEe23SqTzP9Muyw" name="Register a student" incoming="_SsrVYP7GEe23SqTzP9Muyw" outgoing="_8II8AP7GEe23SqTzP9Muyw _JcEQMP7HEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:DecisionNode" xmi:id="_8EhnUP7GEe23SqTzP9Muyw" name="theStudentanyOcl" incoming="_8II8AP7GEe23SqTzP9Muyw" outgoing="_sjwysP7HEe23SqTzP9Muyw _8NcdUP7HEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_Jah_IP7HEe23SqTzP9Muyw" name="Student" visibility="private" incoming="_JcEQMP7HEe23SqTzP9Muyw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_JalCcP7HEe23SqTzP9Muyw" value="1"/>
+    </node>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_siaH0P7HEe23SqTzP9Muyw" name="Handle help request" incoming="_sjwysP7HEe23SqTzP9Muyw" outgoing="_NtDHwP7IEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:OpaqueAction" xmi:id="_8L9PkP7HEe23SqTzP9Muyw" name="Register student into classes" incoming="_8NcdUP7HEe23SqTzP9Muyw" outgoing="_Ea-fcP7IEe23SqTzP9Muyw _IQFIwP7IEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:ActivityFinalNode" xmi:id="_EYAD8P7IEe23SqTzP9Muyw" name="finish" incoming="_Ea-fcP7IEe23SqTzP9Muyw"/>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_IO1LkP7IEe23SqTzP9Muyw" name="SclassRegistration" incoming="_IQFIwP7IEe23SqTzP9Muyw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_IO1yoP7IEe23SqTzP9Muyw" value="1"/>
+    </node>
+    <node xmi:type="uml:DataStoreNode" xmi:id="_NroygP7IEe23SqTzP9Muyw" name="HelpRequest" incoming="_NtDHwP7IEe23SqTzP9Muyw">
+      <upperBound xmi:type="uml:LiteralInteger" xmi:id="_Nrr10P7IEe23SqTzP9Muyw" value="1"/>
+    </node>
+  </packagedElement>
+</uml:Model>

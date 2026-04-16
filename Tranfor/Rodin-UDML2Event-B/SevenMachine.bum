@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.machineFile org.eventb.core.configuration="org.eventb.core.fwd" version="5">
+    <org.eventb.core.event name="'" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="INITIALISATION">
+        <org.eventb.core.action name="'" org.eventb.core.assignment="registered_users ≔ ∅" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="active_submissions ≔ ∅" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name=")" org.eventb.core.assignment="assignment ≔ ∅" org.eventb.core.label="act3"/>
+        <org.eventb.core.action name="*" org.eventb.core.assignment="sub_state ≔ ∅" org.eventb.core.label="act4"/>
+    </org.eventb.core.event>
+    <org.eventb.core.seesContext name="(" org.eventb.core.target="SevenContext"/>
+    <org.eventb.core.variable name=")" org.eventb.core.identifier="registered_users"/>
+    <org.eventb.core.variable name="*" org.eventb.core.identifier="active_submissions"/>
+    <org.eventb.core.invariant name="," org.eventb.core.label="inv1" org.eventb.core.predicate="registered_users ⊆ USERS"/>
+    <org.eventb.core.invariant name="-" org.eventb.core.label="inv2" org.eventb.core.predicate="active_submissions ⊆ SUBMISSIONS"/>
+    <org.eventb.core.event name="/" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="User_Register">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="new_users"/>
+        <org.eventb.core.action name="(" org.eventb.core.assignment="registered_users ≔ registered_users ∪ new_users" org.eventb.core.label="act1"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="new_users ⊆ USERS"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="new_users ∩ registered_users = ∅"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd3" org.eventb.core.predicate="card(new_users) = 5"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="0" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step1">
+        <org.eventb.core.guard name="'" org.eventb.core.label="grd1" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="s"/>
+        <org.eventb.core.parameter name="*" org.eventb.core.identifier="u_admin"/>
+        <org.eventb.core.parameter name="+" org.eventb.core.identifier="u_copy"/>
+        <org.eventb.core.parameter name="," org.eventb.core.identifier="u_layout"/>
+        <org.eventb.core.parameter name="-" org.eventb.core.identifier="u_proof"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd2" org.eventb.core.predicate="s ∈ SUBMISSIONS ∖ active_submissions"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd3" org.eventb.core.predicate="u_admin ∈ registered_users"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd4" org.eventb.core.predicate="u_copy ∈ registered_users"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd5" org.eventb.core.predicate="u_layout ∈ registered_users"/>
+        <org.eventb.core.guard name="2" org.eventb.core.label="grd6" org.eventb.core.predicate="u_proof ∈ registered_users"/>
+        <org.eventb.core.guard name="3" org.eventb.core.label="grd7" org.eventb.core.predicate="u_admin ≠ u"/>
+        <org.eventb.core.guard name="4" org.eventb.core.label="grd8" org.eventb.core.predicate="u_copy ≠ u"/>
+        <org.eventb.core.guard name="5" org.eventb.core.label="grd9" org.eventb.core.predicate="u_layout ≠ u"/>
+        <org.eventb.core.guard name="6" org.eventb.core.label="grd10" org.eventb.core.predicate="u_proof ≠ u"/>
+        <org.eventb.core.action name="7" org.eventb.core.assignment="active_submissions ≔ active_submissions ∪ {s}" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="8" org.eventb.core.assignment="sub_state(s) ≔ n_Submission" org.eventb.core.label="act2"/>
+        <org.eventb.core.action name="9" org.eventb.core.assignment="assignment ≔ assignment   &#13;&#10;                ∪ { u ↦ (s ↦ r_Author) }  &#13;&#10;                ∪ { u_admin ↦ (s ↦ r_Admin) }  &#13;&#10;                ∪ { u_copy ↦ (s ↦ r_Copyeditor) }  &#13;&#10;                ∪ { u_layout ↦ (s ↦ r_LayoutEditor) }  &#13;&#10;                ∪ { u_proof ↦ (s ↦ r_Proofreader) } &#13;&#10;" org.eventb.core.label="act3"/>
+    </org.eventb.core.event>
+    <org.eventb.core.variable name="1" org.eventb.core.identifier="assignment"/>
+    <org.eventb.core.variable name="2" org.eventb.core.identifier="sub_state"/>
+    <org.eventb.core.invariant name="3" org.eventb.core.label="inv3" org.eventb.core.predicate="assignment ∈ USERS ↔ (SUBMISSIONS × ROLES)"/>
+    <org.eventb.core.invariant name="4" org.eventb.core.label="inv4" org.eventb.core.predicate="dom(assignment) ⊆ registered_users"/>
+    <org.eventb.core.invariant name="5" org.eventb.core.label="inv5" org.eventb.core.predicate="sub_state ∈ SUBMISSIONS ⇸ NODES"/>
+    <org.eventb.core.invariant name="6" org.eventb.core.label="inv6" org.eventb.core.predicate="dom(sub_state) ⊆ active_submissions"/>
+    <org.eventb.core.invariant name="7" org.eventb.core.label="inv7" org.eventb.core.predicate="∀u, s· (u ↦ (s ↦ r_Author)) ∈ assignment ⇒ (u ↦ (s ↦ r_Reviewer)) ∉ assignment"/>
+    <org.eventb.core.invariant name="8" org.eventb.core.label="inv8" org.eventb.core.predicate="∀u, s· (u ↦ (s ↦ r_Author)) ∈ assignment ⇒ (u ↦ (s ↦ r_Editor)) ∉ assignment"/>
+    <org.eventb.core.invariant name="9" org.eventb.core.label="inv9" org.eventb.core.predicate="  ∀u, s· (u ↦ (s ↦ r_Author)) ∈ assignment ⇒ (u ↦ (s ↦ r_SectionEditor)) ∉ assignment "/>
+    <org.eventb.core.invariant name=":" org.eventb.core.label="inv10" org.eventb.core.predicate="∀u, s· (u ↦ (s ↦ r_SectionEditor)) ∈ assignment ⇒ (u ↦ (s ↦ r_Reviewer)) ∉ assignment"/>
+    <org.eventb.core.invariant name=";" org.eventb.core.label="inv11" org.eventb.core.predicate="∀u, s· (u ↦ (s ↦ r_Reviewer)) ∈ assignment ⇒ (u ↦ (s ↦ r_Editor)) ∉ assignment"/>
+    <org.eventb.core.invariant name="=" org.eventb.core.label="inv12" org.eventb.core.predicate="dom(ran(assignment)) ⊆ active_submissions"/>
+    <org.eventb.core.event name="&gt;" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step2">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="u_editor"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="u_editor ∈ registered_users"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="s ↦ n_Submission ∈ sub_state"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="u ↦ (s ↦ r_Admin) ∈ assignment"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd6" org.eventb.core.predicate="u_editor ↦ (s ↦ r_Author) ∉ assignment"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd7" org.eventb.core.predicate="u_editor ↦ (s ↦ r_Reviewer) ∉ assignment"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="assignment ≔ assignment ∪ { u_editor ↦ (s ↦ r_Editor) }" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="sub_state(s) ≔ n_SubmissionQueue" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="?" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step3">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="u_sec_ed"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="u_sec_ed ∈ registered_users"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="(s ↦ n_SubmissionQueue ∈ sub_state) ∨ (s ↦ n_AuthorRevision ∈ sub_state)"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="u ↦ (s ↦ r_Editor) ∈ assignment"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd6" org.eventb.core.predicate="u_sec_ed ↦ (s ↦ r_Author) ∉ assignment"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd7" org.eventb.core.predicate="u_sec_ed ↦ (s ↦ r_Reviewer) ∉ assignment"/>
+        <org.eventb.core.action name="1" org.eventb.core.assignment="assignment ≔ assignment ∪ { u_sec_ed ↦ (s ↦ r_SectionEditor) }" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="sub_state(s) ≔ n_SubmissionReview" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="@" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step4">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.parameter name=")" org.eventb.core.identifier="u_reviewer"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd2" org.eventb.core.predicate="u_reviewer ∈ registered_users"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd3" org.eventb.core.predicate="s ↦ n_SubmissionReview ∈ sub_state"/>
+        <org.eventb.core.guard name="-" org.eventb.core.label="grd4" org.eventb.core.predicate="u ↦ (s ↦ r_SectionEditor) ∈ assignment"/>
+        <org.eventb.core.guard name="." org.eventb.core.label="grd5" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.guard name="/" org.eventb.core.label="grd6" org.eventb.core.predicate="u_reviewer ↦ (s ↦ r_Author) ∉ assignment"/>
+        <org.eventb.core.guard name="0" org.eventb.core.label="grd7" org.eventb.core.predicate="u_reviewer ↦ (s ↦ r_SectionEditor) ∉ assignment"/>
+        <org.eventb.core.guard name="1" org.eventb.core.label="grd8" org.eventb.core.predicate="u_reviewer ↦ (s ↦ r_Editor) ∉ assignment"/>
+        <org.eventb.core.action name="2" org.eventb.core.assignment="assignment ≔ assignment ∪ { u_reviewer ↦ (s ↦ r_Reviewer) }" org.eventb.core.label="act1"/>
+        <org.eventb.core.action name="3" org.eventb.core.assignment="sub_state(s) ≔ n_SelectReviewers" org.eventb.core.label="act2"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="A" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step5">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_SelectReviewers ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="u ↦ (s ↦ r_Reviewer) ∈ assignment"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_ReviewConducted" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="B" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step6">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_ReviewConducted ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="u ↦ (s ↦ r_Editor) ∈ assignment"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_EditorialDecision" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="C" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step7">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_EditorialDecision ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="u ↦ (s ↦ r_Author) ∈ assignment"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_AuthorRevision" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="D" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step8">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_EditorialDecision ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="u ↦ (s ↦ r_Copyeditor) ∈ assignment"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_Copyediting" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="E" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step9">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_Copyediting ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="s ↦ n_Copyediting ∈ sub_state"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_LayoutEditing" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="F" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Step10">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_LayoutEditing ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="  u ↦ (s ↦ r_Proofreader) ∈ assignment "/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_Proofreading" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+    <org.eventb.core.event name="G" org.eventb.core.convergence="0" org.eventb.core.extended="false" org.eventb.core.label="Done ">
+        <org.eventb.core.parameter name="'" org.eventb.core.identifier="u"/>
+        <org.eventb.core.parameter name="(" org.eventb.core.identifier="s"/>
+        <org.eventb.core.guard name=")" org.eventb.core.label="grd1" org.eventb.core.predicate="s ∈ active_submissions"/>
+        <org.eventb.core.guard name="*" org.eventb.core.label="grd2" org.eventb.core.predicate="s ↦ n_Proofreading ∈ sub_state"/>
+        <org.eventb.core.guard name="+" org.eventb.core.label="grd3" org.eventb.core.predicate="u ↦ (s ↦ r_Editor) ∈ assignment"/>
+        <org.eventb.core.guard name="," org.eventb.core.label="grd4" org.eventb.core.predicate="u ∈ registered_users"/>
+        <org.eventb.core.action name="-" org.eventb.core.assignment="sub_state(s) ≔ n_Done" org.eventb.core.label="act1"/>
+    </org.eventb.core.event>
+</org.eventb.core.machineFile>

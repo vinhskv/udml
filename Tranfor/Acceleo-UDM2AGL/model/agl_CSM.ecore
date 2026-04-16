@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="aglCSM" nsURI="model.aglCSM" nsPrefix="model.aglCSM">
+  <eClassifiers xsi:type="ecore:EClass" name="AGraph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anodes" lowerBound="1"
+        upperBound="-1" eType="#//ANode" eOpposite="#//ANode/agraph"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ANode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="agraph" lowerBound="1"
+        eType="#//AGraph" eOpposite="#//AGraph/anodes"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actSeq" lowerBound="1"
+        upperBound="-1" eType="#//MAct" eOpposite="#//MAct/anode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refCls" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceCls" eType="#//ModuleService"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outClses" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodeType" eType="#//NodeType"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAct">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="anode" lowerBound="1" eType="#//ANode"
+        eOpposite="#//ANode/actSeq"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actName" eType="#//Action"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preStates" eType="#//State"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pstStates" eType="#//State"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fieldNames" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fieldVals" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="State">
+    <eLiterals name="Opened"/>
+    <eLiterals name="NewObject" value="1"/>
+    <eLiterals name="Editing" value="2"/>
+    <eLiterals name="Created" value="3"/>
+    <eLiterals name="Updated" value="4"/>
+    <eLiterals name="Deleted" value="5"/>
+    <eLiterals name="Reset" value="6"/>
+    <eLiterals name="Cancelled" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NodeType">
+    <eLiterals name="MergeNode"/>
+    <eLiterals name="ForkNode" value="1"/>
+    <eLiterals name="DecisionNdoe" value="2"/>
+    <eLiterals name="JoinNode" value="3"/>
+    <eLiterals name="SequenceNode" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Action">
+    <eLiterals name="open"/>
+    <eLiterals name="newObject" value="1"/>
+    <eLiterals name="setDataFieldValues" value="2"/>
+    <eLiterals name="createObject" value="3"/>
+    <eLiterals name="updateObject" value="4"/>
+    <eLiterals name="deleteObject" value="5"/>
+    <eLiterals name="reset" value="6"/>
+    <eLiterals name="cancel" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModuleService">
+    <eLiterals name="ActivityController"/>
+    <eLiterals name="DataController" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

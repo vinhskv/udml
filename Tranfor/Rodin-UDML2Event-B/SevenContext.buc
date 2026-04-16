@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<org.eventb.core.contextFile org.eventb.core.configuration="org.eventb.core.fwd;de.prob.symbolic.ctxBase" version="3">
+    <org.eventb.core.carrierSet name="3" org.eventb.core.identifier="NODES"/>
+    <org.eventb.core.carrierSet name="4" org.eventb.core.identifier="ROLES"/>
+    <org.eventb.core.constant name="5" org.eventb.core.identifier="n_Submission"/>
+    <org.eventb.core.axiom name="6" org.eventb.core.label="axm1" org.eventb.core.predicate="partition(NODES,   &#13;&#10;        {n_Submission}, {n_SubmissionQueue}, {n_SubmissionReview},   &#13;&#10;        {n_SelectReviewers}, {n_ReviewConducted}, {n_EditorialDecision},  &#13;&#10;        {n_AuthorRevision}, {n_Copyediting}, {n_LayoutEditing},   &#13;&#10;        {n_Proofreading}, {n_Done}, {n_Start}  &#13;&#10;    ) "/>
+    <org.eventb.core.constant name="7" org.eventb.core.identifier="n_SubmissionQueue"/>
+    <org.eventb.core.constant name="8" org.eventb.core.identifier="n_SubmissionReview"/>
+    <org.eventb.core.constant name="9" org.eventb.core.identifier="n_SelectReviewers"/>
+    <org.eventb.core.constant name=":" org.eventb.core.identifier="n_ReviewConducted"/>
+    <org.eventb.core.constant name=";" org.eventb.core.identifier="n_EditorialDecision"/>
+    <org.eventb.core.constant name="=" org.eventb.core.identifier="n_AuthorRevision"/>
+    <org.eventb.core.constant name="&gt;" org.eventb.core.identifier="n_Copyediting"/>
+    <org.eventb.core.constant name="?" org.eventb.core.identifier="n_LayoutEditing"/>
+    <org.eventb.core.constant name="@" org.eventb.core.identifier="n_Proofreading"/>
+    <org.eventb.core.constant name="A" org.eventb.core.identifier="n_Done"/>
+    <org.eventb.core.axiom name="C" org.eventb.core.label="axm2" org.eventb.core.predicate="partition(ROLES,   &#13;&#10;        {r_Author}, {r_Admin}, {r_Editor}, {r_SectionEditor},   &#13;&#10;        {r_Reviewer}, {r_Copyeditor}, {r_LayoutEditor}, {r_Proofreader}  &#13;&#10;    ) &#13;&#10;"/>
+    <org.eventb.core.constant name="D" org.eventb.core.identifier="r_Author"/>
+    <org.eventb.core.axiom name="H" org.eventb.core.label="axm3" org.eventb.core.predicate="finite(USERS)"/>
+    <org.eventb.core.carrierSet name="M" org.eventb.core.identifier="USERS"/>
+    <org.eventb.core.carrierSet name="N" org.eventb.core.identifier="SUBMISSIONS"/>
+    <org.eventb.core.carrierSet name="O" org.eventb.core.identifier="PERMISSIONS"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="P" org.eventb.core.identifier="r_Admin"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="Q" org.eventb.core.identifier="r_Editor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="R" org.eventb.core.identifier="r_SectionEditor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="S" org.eventb.core.identifier="r_Reviewer"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="T" org.eventb.core.identifier="r_Proofreader"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="U" org.eventb.core.identifier="r_Copyeditor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="V" org.eventb.core.identifier="r_LayoutEditor"/>
+    <org.eventb.core.constant de.prob.symbolic.symbolicAttribute="false" name="W" org.eventb.core.identifier="n_Start"/>
+    <org.eventb.core.axiom name="\" org.eventb.core.label="axm4" org.eventb.core.predicate="card(USERS) ≥ 5"/>
+</org.eventb.core.contextFile>

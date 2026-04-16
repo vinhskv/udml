@@ -1,0 +1,22 @@
+
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@4565a70a (name: 01:CustOrder, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.DecisionNodeImpl@66434cc8 (name: 02:AcceptOrNot, visibility: <unset>) (isLeaf: false);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@42f22995 (name: 03:FillOrder, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.MergeNodeImpl@60921b21 (name: 04:EndOrder, visibility: <unset>) (isLeaf: false);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@693e4d19 (name: 05:CustOrder, visibility: private) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.ForkNodeImpl@29182679 (name: 06:Delivery, visibility: <unset>) (isLeaf: false);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@bd2f5a9 (name: 07:CustOrder, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@57bd802b (name: 08:CollectPayment, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@1b9c1b51 (name: 09:ShipOrder, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@6a84bc2a (name: 10:Invoice, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@27068a50 (name: 11:AcceptPayment, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@2e52fb3e (name: 12:Shipment, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.JoinNodeImpl@715fb77 (name: 13:CompleteOrder, visibility: <unset>) (isLeaf: false) (isCombineDuplicate: true);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@511d5d04 (name: 14:Payment, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.DataStoreNodeImpl@68e62ca4 (name: 15:CustOrder, visibility: <unset>) (isLeaf: false) (isControlType: false, ordering: FIFO);
+org.eclipse.uml2.uml.internal.impl.ActivityFinalNodeImpl@1a5b8489 (name: FinishHandleOrder, visibility: <unset>) (isLeaf: false);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@2c779e5 (name: MakePayment, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@17ae7628 (name: ReceiveOrder, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.OpaqueActionImpl@5cbb84b1 (name: SentInvoice, visibility: <unset>) (isLeaf: false) (isLocallyReentrant: false) (body: null, language: null);
+org.eclipse.uml2.uml.internal.impl.InitialNodeImpl@522b2631 (name: StartHandleOrder, visibility: <unset>) (isLeaf: false);
+
