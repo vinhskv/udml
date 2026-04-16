@@ -13,6 +13,8 @@ The tool implements a model-driven approach to integrate structural, behavioral,
 #### 1.1 Constraint Annotation Pattern (CAP)
 - A technique for embedding domain constraints into models using annotations.
 - Supports separation of concerns while maintaining semantic consistency.
+  
+🔗 Source: https://github.com/vinhskv/udml/tree/main/CAP
 
 #### 1.2 Activity Graph Language (AGL)
 - Integrates behavioral aspects into domain models.
@@ -27,6 +29,8 @@ The tool implements a model-driven approach to integrate structural, behavioral,
   - Modular configuration (MC)
 - Enables consistent integration of multiple domain concerns.
 
+  🔗 Source: https://github.com/vinhskv/udml/tree/main/MPS-UDML
+
 ---
 
 ### 2. Model Transformations and Code Generation
@@ -35,14 +39,21 @@ The tool implements a model-driven approach to integrate structural, behavioral,
 - Transforms requirement models (UML/OCL) into unified domain models (UDM).
 - Integrates structure and behavior into a single representation.
 
+Source: https://github.com/vinhskv/udml/tree/main/Tranfo-RM2UDM
+
 #### 2.2 UDM2AGL – From Model to Executable Specification
 - Transforms UDM into AGL⁺ annotated source code.
 - Enables direct execution and integration with object-oriented platforms (e.g., Java).
+  
+Source: https://github.com/vinhskv/udml/tree/main/Tranfo-UDM2AGL
 
 #### 2.3 UDML2Event-B – Formal Verification
 - Transforms UDML models into Event-B specifications.
 - Supports formal verification using the Rodin platform.
 
+  
+Source: https://github.com/vinhskv/udml/tree/main/Rodin-UDML2Event-B
+  
 ---
 
 ## Key Features
