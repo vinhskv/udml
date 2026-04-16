@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org.vnu.sme.dcslcs" nsURI="http://www.org.vnu/sme/2024/dcslcs"
+    nsPrefix="dcslcs">
+  <eClassifiers xsi:type="ecore:EClass" name="DAttrCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="auto" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dclass" eType="#//DClassCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceAttribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceQuery" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceQueryHandler" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValueFunction" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="format" eType="#//FormatCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="virtual" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="filter" upperBound="-1"
+        eType="#//SelectCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAssocCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ascName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ascType" eType="#//AssocEndTypeCS"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endType" eType="#//AssocTypeCS"
+        defaultValueLiteral=""/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="associate" eType="#//AssociateCS"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dependsOn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="derivedFrom" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="normAttrib" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reflexive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DOptCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="requires" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effects" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TypeDOptCS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DClassCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serialisable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mutable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="singleton" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
+        defaultValueLiteral="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schema" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wrapperOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleDescriptor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageAware" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectPoolIsConstant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocEndTypeCS">
+    <eLiterals name="One"/>
+    <eLiterals name="May" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocTypeCS">
+    <eLiterals name="Many2Many"/>
+    <eLiterals name="One2Many" value="1"/>
+    <eLiterals name="One2One" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AssociateCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="carMax" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="carMin" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="determinant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="updateLink" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassCS" eSuperTypes="#//ClassifierCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedMethodcs" upperBound="-1"
+        eType="#//MethodCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
+        eType="#//PropertyCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MethodCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedParametercs" upperBound="-1"
+        eType="#//ParameterCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//ParameterDirectionKind"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassifierCS" abstract="true" eSuperTypes="#//TypeCS #//QualifiedElementCS #//AnnotableCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="specialization" eType="#//GeneralizationCS"
+        eOpposite="#//GeneralizationCS/general"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="generalizationcs" upperBound="-1"
+        eType="#//GeneralizationCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneralizationCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="general" lowerBound="1"
+        eType="#//ClassifierCS" eOpposite="#//ClassifierCS/specialization"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ParameterDirectionKind"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrRefCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="vaule" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//ElementTypeCS"
+        defaultValueLiteral=""/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ElementTypeCS">
+    <eLiterals name="annotation_type"/>
+    <eLiterals name="constructor" value="1"/>
+    <eLiterals name="field" value="2"/>
+    <eLiterals name="method" value="3"/>
+    <eLiterals name="module" value="4"/>
+    <eLiterals name="package" value="5"/>
+    <eLiterals name="parameter" value="6"/>
+    <eLiterals name="type" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FormatCS">
+    <eLiterals name="Currency"/>
+    <eLiterals name="Date" value="1"/>
+    <eLiterals name="TimeHM" value="2"/>
+    <eLiterals name="MonthOfYear" value="3"/>
+    <eLiterals name="WholeNumber" value="4"/>
+    <eLiterals name="Number1Dot1" value="5"/>
+    <eLiterals name="FixedPhone" value="6"/>
+    <eLiterals name="CellPhone" value="7"/>
+    <eLiterals name="Nil" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeDOptCS">
+    <eLiterals name="Getter"/>
+    <eLiterals name="Setter" value="1"/>
+    <eLiterals name="LinkAdder" value="2"/>
+    <eLiterals name="LinkAdderNew" value="3"/>
+    <eLiterals name="LinkRemover" value="4"/>
+    <eLiterals name="LinkUpdater" value="5"/>
+    <eLiterals name="RequiredConstructor" value="6"/>
+    <eLiterals name="DataSourceConstructor" value="7"/>
+    <eLiterals name="ObjectFormConstructor" value="8"/>
+    <eLiterals name="AutoAttributeValueGen" value="9"/>
+    <eLiterals name="AutoAttributeValueSynchroniser" value="10"/>
+    <eLiterals name="LinkCountGetter" value="11"/>
+    <eLiterals name="LinkCountSetter" value="12"/>
+    <eLiterals name="DerivedAttributeUpdater" value="13"/>
+    <eLiterals name="DerivedAttributeGetter" value="14"/>
+    <eLiterals name="DerivedAttributeParser" value="15"/>
+    <eLiterals name="ObjectStateRefresher" value="16"/>
+    <eLiterals name="DefaultValueFunction" value="17"/>
+    <eLiterals name="SourceQueryHandler" value="18"/>
+    <eLiterals name="DataFunctionImpl" value="19"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotableCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//AnnotationCS" eOpposite="#//AnnotationCS/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//AnnotableCS" eOpposite="#//AnnotableCS/annotations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NewEClass18"/>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedElementCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFinal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//Visibility"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
+    <eLiterals name="default"/>
+    <eLiterals name="package" value="1"/>
+    <eLiterals name="private" value="2"/>
+    <eLiterals name="protecd" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeCS">
+    <eLiterals name="String"/>
+    <eLiterals name="StringMasked" value="1"/>
+    <eLiterals name="Char" value="2"/>
+    <eLiterals name="Integer" value="3"/>
+    <eLiterals name="Long" value="4"/>
+    <eLiterals name="Float" value="5"/>
+    <eLiterals name="Double" value="6"/>
+    <eLiterals name="Boolean" value="7"/>
+    <eLiterals name="Domain" value="8"/>
+    <eLiterals name="Collection" value="9"/>
+    <eLiterals name="Array" value="10"/>
+    <eLiterals name="Color" value="11"/>
+    <eLiterals name="Font" value="12"/>
+    <eLiterals name="File" value="13"/>
+    <eLiterals name="Null" value="14"/>
+    <eLiterals name="Image" value="15"/>
+    <eLiterals name="Date" value="16"/>
+    <eLiterals name="Short" value="17"/>
+    <eLiterals name="Byte" value="18"/>
+    <eLiterals name="ByteArraySmall" value="19"/>
+    <eLiterals name="Serializable" value="20"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clazz" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+  </eClassifiers>
+</ecore:EPackage>

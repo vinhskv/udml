@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<product version="3" modelHash="-dj7iwx6qips20915js69ins1ntpzyc1">
+  <files names="Aggregation_AsDiagram_Editor.java:Aggregation_AsDiagram_EditorBuilder_a.java:Association_AsDiagram_Editor.java:Association_AsDiagram_EditorBuilder_a.java:Association_AsDiagram_InspectorBuilder_a.java:Class_AsDiagram_Editor.java:Class_AsDiagram_EditorBuilder_a.java:Class_AsDiagram_InspectorBuilder_a.java:Composition_AsDiagram_Editor.java:Composition_AsDiagram_EditorBuilder_a.java:DomainModel_AsDiagram_Editor.java:DomainModel_AsDiagram_EditorBuilder_a.java:EditorAspectDescriptorImpl.java:Operation_AsDiagram_Editor.java:Operation_AsDiagram_EditorBuilder_a.java:Parameter_AsDiagram_Editor.java:Parameter_AsDiagram_EditorBuilder_a.java:Parameter_AsDiagram_InspectorBuilder_a.java:Property_AsDiagram_Editor.java:Property_AsDiagram_EditorBuilder_a.java:RelationShip_AsDiagram_Editor.java:RelationShip_AsDiagram_EditorBuilder_a.java" />
+</product>
+

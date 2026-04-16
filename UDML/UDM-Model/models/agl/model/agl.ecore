@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org.vnu.sme.agl" nsURI="http://www.org.vnu/sme/2024/agl" nsPrefix="agl">
+  <eClassifiers xsi:type="ecore:EEnum" name="Type">
+    <eLiterals name="String"/>
+    <eLiterals name="StringMasked" value="1"/>
+    <eLiterals name="Char" value="2"/>
+    <eLiterals name="Integer" value="3"/>
+    <eLiterals name="Long" value="4"/>
+    <eLiterals name="Float" value="5"/>
+    <eLiterals name="Double" value="6"/>
+    <eLiterals name="Boolean" value="7"/>
+    <eLiterals name="Domain" value="8"/>
+    <eLiterals name="Collection" value="9"/>
+    <eLiterals name="Array" value="10"/>
+    <eLiterals name="Color" value="11"/>
+    <eLiterals name="Font" value="12"/>
+    <eLiterals name="File" value="13"/>
+    <eLiterals name="Null" value="14"/>
+    <eLiterals name="Image" value="15"/>
+    <eLiterals name="Date" value="16"/>
+    <eLiterals name="Short" value="17"/>
+    <eLiterals name="Byte" value="18"/>
+    <eLiterals name="ByteArraySmall" value="19"/>
+    <eLiterals name="Serializable" value="20"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocType">
+    <eLiterals name="One2One"/>
+    <eLiterals name="One2Many" value="1"/>
+    <eLiterals name="Many2Many" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocEndType">
+    <eLiterals name="One"/>
+    <eLiterals name="Many" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AGraph" eSuperTypes="../../udml.emf/model/udml.ecore#//Annotation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" lowerBound="2" upperBound="-1"
+        eType="#//ANode" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ANode">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refCls" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceCls" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nodeType" eType="#//NodeType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outClses" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outNodes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zone" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actSeq" lowerBound="1"
+        upperBound="-1" eType="#//MAct" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="NodeType">
+    <eLiterals name="Action"/>
+    <eLiterals name="Decision" value="1"/>
+    <eLiterals name="Fork" value="2"/>
+    <eLiterals name="Join" value="3"/>
+    <eLiterals name="Merge" value="4"/>
+    <eLiterals name="Coordinator" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAct">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="actName" eType="#//MethodName"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endStates" eType="#//AppState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribNames" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MethodName">
+    <eLiterals name="newObject"/>
+    <eLiterals name="setDataFieldValues" value="1"/>
+    <eLiterals name="activateView" value="2"/>
+    <eLiterals name="showObject" value="3"/>
+    <eLiterals name="updateObject" value="4"/>
+    <eLiterals name="filterInput" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AppState">
+    <eLiterals name="Created"/>
+    <eLiterals name="Updated" value="1"/>
+    <eLiterals name="NewObject" value="2"/>
+  </eClassifiers>
+</ecore:EPackage>

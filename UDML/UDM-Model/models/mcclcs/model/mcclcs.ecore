@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="org.vnu.sme.mcclcs" nsURI="http://www.org.vnu/sme/2024/mcclcs"
+    nsPrefix="mcclcs">
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeCS">
+    <eLiterals name="String"/>
+    <eLiterals name="StringMasked" value="1"/>
+    <eLiterals name="Char" value="2"/>
+    <eLiterals name="Integer" value="3"/>
+    <eLiterals name="Long" value="4"/>
+    <eLiterals name="Float" value="5"/>
+    <eLiterals name="Double" value="6"/>
+    <eLiterals name="Boolean" value="7"/>
+    <eLiterals name="Domain" value="8"/>
+    <eLiterals name="Collection" value="9"/>
+    <eLiterals name="Array" value="10"/>
+    <eLiterals name="Color" value="11"/>
+    <eLiterals name="Font" value="12"/>
+    <eLiterals name="File" value="13"/>
+    <eLiterals name="Null" value="14"/>
+    <eLiterals name="Image" value="15"/>
+    <eLiterals name="Date" value="16"/>
+    <eLiterals name="Short" value="17"/>
+    <eLiterals name="Byte" value="18"/>
+    <eLiterals name="ByteArraySmall" value="19"/>
+    <eLiterals name="Serializable" value="20"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocTypeCS">
+    <eLiterals name="One2One"/>
+    <eLiterals name="One2Many" value="1"/>
+    <eLiterals name="Many2Many" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AssocEndTypeCS">
+    <eLiterals name="One"/>
+    <eLiterals name="Many" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DClassSub1">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wrapperOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleDescriptor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="languageAware" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objectPoolIsConstant" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModelDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="editable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indexable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataSourceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertydesc" upperBound="-1"
+        eType="#//PropertyDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributedesc" upperBound="-1"
+        eType="#//AttributeDescCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="#//PropertyNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueAsString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ViewDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="on" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClassLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageIcon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="view" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="viewType" eType="#//RegionTypeCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="editable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parent" eType="#//RegionNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="children" eType="#//RegionNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="excludeComponents" eType="#//RegionNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="style" eType="#//StyleNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topContainerType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topX" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="topY" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="heightRatio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="widthRatio" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resizable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relocatable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="formTitleIcon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RegionTypeCS">
+    <eLiterals name="Root"/>
+    <eLiterals name="Main" value="1"/>
+    <eLiterals name="DataLogin" value="2"/>
+    <eLiterals name="ChoiceMenu" value="3"/>
+    <eLiterals name="Check" value="4"/>
+    <eLiterals name="Menu" value="5"/>
+    <eLiterals name="Text" value="6"/>
+    <eLiterals name="Label" value="7"/>
+    <eLiterals name="Null" value="8"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RegionNameCS">
+    <eLiterals name="Desktop"/>
+    <eLiterals name="MenuBar" value="1"/>
+    <eLiterals name="ToolBar" value="2"/>
+    <eLiterals name="StatusBar" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="StyleNameCS">
+    <eLiterals name="Default"/>
+    <eLiterals name="DefaultBoldOnWhite" value="1"/>
+    <eLiterals name="DefaultOnWhite" value="2"/>
+    <eLiterals name="DefaultBold" value="3"/>
+    <eLiterals name="DefaultBlue" value="4"/>
+    <eLiterals name="Heading1" value="5"/>
+    <eLiterals name="Heading2" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignX" eType="#//AlignmentXCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignY" eType="#//AlignmentYCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="styleField" eType="#//StyleNameCS"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStateListener" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStateEventSource" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="editable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isVisible" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="select" eType="#//SelectCS"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelectCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clazz" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AlignmentXCS">
+    <eLiterals name="Left"/>
+    <eLiterals name="Center" value="1"/>
+    <eLiterals name="Right" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AlignmentYCS">
+    <eLiterals name="Top"/>
+    <eLiterals name="Middle" value="1"/>
+    <eLiterals name="Bottom" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControllerDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="on" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStateListener" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDataFieldStateListener"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CEdgeCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scopedesc" upperBound="-1"
+        eType="#//ScopeDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="child" upperBound="-1"
+        eType="#//ChildCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ScopeDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateScope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="editable" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ChildCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CTreeCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="root" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateScope" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cedge" upperBound="-1"
+        eType="#//CEdgeCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModuleTypeCS">
+    <eLiterals name="Security"/>
+    <eLiterals name="System" value="1"/>
+    <eLiterals name="DomainMain" value="2"/>
+    <eLiterals name="DomainData" value="3"/>
+    <eLiterals name="DomainReport" value="4"/>
+    <eLiterals name="SystemService" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SetUpDescCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="postSetUp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyNameCS">
+    <eLiterals name="view_toolBar_buttonIconDisplay"/>
+    <eLiterals name="view_searchToolBar_buttonIconDisplay" value="1"/>
+    <eLiterals name="view_objectForm_actions_buttonIconDisplay" value="2" literal="view_objectForm_actions_buttonIconDisplay"/>
+    <eLiterals name="view_lang_international" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//AnnotableCS" eOpposite="#//AnnotableCS/annotation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotableCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotation" upperBound="-1"
+        eType="#//AnnotationCS" eOpposite="#//AnnotationCS/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModuleDescriptorCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isViewer" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPrimary" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="childModules" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isMemoryBased" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modeldesc" upperBound="-1"
+        eType="#//ModelDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="viewdesc" upperBound="-1"
+        eType="#//ViewDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="controllerdesc" upperBound="-1"
+        eType="#//ControllerDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setupdesc" upperBound="-1"
+        eType="#//SetUpDescCS" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctree" upperBound="-1"
+        eType="#//CTreeCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DClassCS" eSuperTypes="#//AnnotationCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dclasssub1" upperBound="-1"
+        eType="#//DClassSub1" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="QualifiedElementCS" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAbstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFinal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isStatic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="#//Visibility"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Visibility">
+    <eLiterals name="default"/>
+    <eLiterals name="package" value="1"/>
+    <eLiterals name="private" value="2"/>
+    <eLiterals name="protecd" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassifierCS" abstract="true" eSuperTypes="#//QualifiedElementCS #//AnnotableCS #//TypeCS.1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassCS" eSuperTypes="#//ClassifierCS">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ownedAttribute" upperBound="-1"
+        eType="#//PropertyCS" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyCS"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeCS">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
