@@ -29,7 +29,7 @@ The tool implements a model-driven approach to integrate structural, behavioral,
   - Modular configuration (MC)
 - Enables consistent integration of multiple domain concerns.
 
-  🔗 Source: https://github.com/vinhskv/udml/tree/main/MPS-UDML
+  🔗 Source: https://github.com/vinhskv/udml/tree/main/UDML
 
 ---
 
